@@ -1,116 +1,27 @@
-import app from '../lib/app.js';
-import supertest from 'supertest';
-import client from '../lib/client.js';
-import { execSync } from 'child_process';
+import cityData from '../data/data';
+import { formatStuffs } from '../lib/munge-utils';
 
-const request = supertest(app);
+describe('API Data Munging', () => {
 
-describe('API Routes', () => {
-
-  beforeAll(() => {
-    execSync('npm run setup-db');
-  });
-
-  afterAll(async () => {
-    return client.end();
-  });
-
-  const expectedCats = [
+  const expectedStuff = [
     {
-      id: expect.any(Number),
-      name: 'Felix',
-      type: 'Tuxedo',
-      url: 'cats/felix.png',
-      year: 1892,
-      lives: 3,
-      isSidekick: false
+      'location': 'Portland, Multnomah County, Oregon, USA',
+      'type': 'city',
+      'id': '282983083',
+      'latitude': '45.5202471',
+      'longitude': '-122.6741949',
     },
     {
-      id: expect.any(Number),
-      name: 'Garfield',
-      type: 'Orange Tabby',
-      url: 'cats/garfield.jpeg',
-      year: 1978,
-      lives: 7,
-      isSidekick: false
-    },
-    {
-      id: expect.any(Number),
-      name: 'Duchess',
-      type: 'Angora',
-      url: 'cats/duchess.jpeg',
-      year: 1970,
-      lives: 9,
-      isSidekick: false
-    },
-    {
-      id: expect.any(Number),
-      name: 'Stimpy',
-      type: 'Manx',
-      url: 'cats/stimpy.jpeg',
-      year: 1990,
-      lives: 1,
-      isSidekick: true
-    },
-    {
-      id: expect.any(Number),
-      name: 'Sylvester',
-      type: 'Tuxedo',
-      url: 'cats/sylvester.jpeg',
-      year: 1945,
-      lives: 1,
-      isSidekick: true
-    },
-    {
-      id: expect.any(Number),
-      name: 'Tigger',
-      type: 'Orange Tabby',
-      url: 'cats/tigger.jpeg',
-      year: 1928,
-      lives: 8,
-      isSidekick: false
-    },
-    {
-      id: expect.any(Number),
-      name: 'Hello Kitty',
-      type: 'Angora',
-      url: 'cats/hello-kitty.jpeg',
-      year: 1974,
-      lives: 9,
-      isSidekick: false
-    },
-    {
-      id: expect.any(Number),
-      name: 'Hobbs',
-      type: 'Orange Tabby',
-      url: 'cats/hobbs.jpeg',
-      year: 1985,
-      lives: 6,
-      isSidekick: true
+      'location': 'Portland, Cumberland County, Maine, USA',
+      'type': 'city',
+      'id': '236025890',
+      'latitude': '43.6610277',
+      'longitude': '-70.2548596',
     }
   ];
 
-  // If a GET request is made to /api/cats, does:
-  // 1) the server respond with status of 200
-  // 2) the body match the expected API data?
-  it('GET /api/cats', async () => {
-    // act - make the request
-    const response = await request.get('/api/cats');
-
-    // was response OK (200)?
-    expect(response.status).toBe(200);
-
-    // did it return the data we expected?
-    expect(response.body).toEqual(expectedCats);
-
-  });
-
-  // If a GET request is made to /api/cats/:id, does:
-  // 1) the server respond with status of 200
-  // 2) the body match the expected API data for the cat with that id?
-  test('GET /api/cats/:id', async () => {
-    const response = await request.get('/api/cats/2');
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual(expectedCats[1]);
+  it('munges city data', async () => {
+    const output = formatStuffs(cityData);
+    expect(output).toEqual(expectedStuff);
   });
 });

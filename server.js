@@ -1,5 +1,8 @@
 // import our app file
+import dotenv from 'dotenv';
+dotenv.config();
 import app from './lib/app.js';
+
 
 // either use the env variable PORT, or default to 8001
 const port = process.env.PORT || 8001;
