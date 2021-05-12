@@ -1,27 +1,31 @@
 import cityData from '../data/data';
-import { formatStuffs } from '../lib/munge-utils';
+import weatherData from '../data/weather';
+import { formatCity, formatWeather } from '../lib/munge-utils';
 
 describe('API Data Munging', () => {
 
   const expectedStuff = [
     {
-      'location': 'Portland, Multnomah County, Oregon, USA',
-      'type': 'city',
-      'id': '282983083',
-      'latitude': '45.5202471',
-      'longitude': '-122.6741949',
-    },
-    {
-      'location': 'Portland, Cumberland County, Maine, USA',
-      'type': 'city',
-      'id': '236025890',
-      'latitude': '43.6610277',
-      'longitude': '-70.2548596',
+      'formatted_query': 'Berlin, Germany',
+      'latitude': '52.5015217',
+      'longitude': '13.4025498',
     }
   ];
 
-  it('munges city data', async () => {
-    const output = formatStuffs(cityData);
+  const expectedWeather = [
+    {
+      'forecast': 'Light rain',
+      'date': '2021-05-13',
+    }
+  ];
+
+  test('munges city data', async () => {
+    const output = formatCity(cityData);
     expect(output).toEqual(expectedStuff);
+  });
+
+  test('munges weather data', async () => {
+    const output = formatWeather(weatherData);
+    expect(output).toEqual(expectedWeather);
   });
 });

@@ -1,31 +1,24 @@
-export default {
-  'page': 1,
-  'results': [
-    {
-      'place_id': '282983083',
-      'licence': 'https://locationiq.com/attribution',
-      'osm_type': 'relation',
-      'osm_id': '186579',
-      'lat': '45.5202471',
-      'lon': '-122.6741949',
-      'display_name': 'Portland, Multnomah County, Oregon, USA',
-      'class': 'place',
-      'type': 'city',
-      'importance': 0.75356571743377,
-      'icon': 'https://locationiq.org/static/images/mapicons/poi_place_city.p.20.png'
-    },
-    {
-      'place_id': '236025890',
-      'licence': 'https://locationiq.com/attribution',
-      'osm_type': 'relation',
-      'osm_id': '132500',
-      'lat': '43.6610277',
-      'lon': '-70.2548596',
-      'display_name': 'Portland, Cumberland County, Maine, USA',
-      'class': 'place',
-      'type': 'city',
-      'importance': 0.65297101392868,
-      'icon': 'https://locationiq.org/static/images/mapicons/poi_place_city.p.20.png'
-    }
-  ]
-};
+const cities = [
+
+  {
+    'place_id': '235183765',
+    'licence': 'https://locationiq.com/attribution',
+    'osm_type': 'relation',
+    'osm_id': '62422',
+    'boundingbox': [
+      '52.3382448',
+      '52.6755087',
+      '13.088345',
+      '13.7611609'
+    ],
+    'lat': '52.5015217',
+    'lon': '13.4025498',
+    'display_name': 'Berlin, Germany',
+    'class': 'boundary',
+    'type': 'administrative',
+    'importance': 0.887539028249136,
+    'icon': 'https://locationiq.org/static/images/mapicons/poi_boundary_administrative.p.20.png'
+  }
+];
+
+export default cities;
