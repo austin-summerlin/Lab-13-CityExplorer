@@ -3,7 +3,7 @@ import weatherData from '../data/weather';
 import yelpData from '../data/yelp';
 import { formatCity, formatWeather, formatYelp } from '../lib/munge-utils';
 
-describe('API Data Munging', () => {
+describe('API Routes', () => {
 
   const expectedStuff = [
     {
