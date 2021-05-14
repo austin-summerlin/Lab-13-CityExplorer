@@ -5,13 +5,13 @@ import { formatCity, formatWeather, formatYelp } from '../lib/munge-utils';
 
 describe('API Routes', () => {
 
-  const expectedStuff = [
-    {
-      'formatted_query': 'Berlin, Germany',
-      'latitude': '52.5015217',
-      'longitude': '13.4025498',
-    }
-  ];
+  const expectedStuff =
+  {
+    'formatted_query': 'Berlin, Germany',
+    'latitude': '52.5015217',
+    'longitude': '13.4025498',
+  }
+    ;
 
   const expectedWeather = [
     {
